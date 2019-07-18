@@ -1,0 +1,23 @@
+﻿@model Telerik.Sitefinity.Frontend.Mvc.Models.ContentListViewModel
+@using Telerik.Sitefinity.Frontend.Mvc.Helpers;
+@using Telerik.Sitefinity.Modules.Pages;
+@using Telerik.Sitefinity.Web.DataResolving;
+<div class="@Model.CssClass">
+    <h2>Posts for @ViewBag.ThreadTitle</h2>
+    <ul>
+        @foreach (var item in Model.Items)
+        {
+        <li>
+            <h3>
+                <span>@item.Fields.Title</span>
+            </h3>
+            <div>
+                @item.GetDateTime("LastModified", "MMM d, yyyy, HH:mm tt")
+            </div>
+            <div class="sf-Long-text">
+                @Html.HtmlSanitize((string)item.Fields.Content)
+            </div>
+        </li>
+        }
+    </ul>
+</div>
